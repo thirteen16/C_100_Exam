@@ -3,14 +3,31 @@
 #include <stdio.h>
 
 int main() {
-    char a[3] = {'a', 'b', 'c'};
+    char a_team[] = {'a', 'b', 'c'};
+    char b_team[] = {'x', 'y', 'z'};
+    int match_found = 0;
 
-    for(int i = 0; i < 3; i++){
-        if(a[i] == 'x' || a[i] == 'z'){
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            for (int k = 0; k < 3; k++) {
+                // 确保三个比赛对手各不相同
+                if (i != j && j != k && i != k) {
+                    // 根据题目条件过滤
+                    if (a_team[0] != b_team[0] && a_team[2] != b_team[0] && a_team[2] != b_team[2]) {
+                        printf("比赛名单:\n");
+                        printf("a 对阵 %c\n", b_team[i]);
+                        printf("b 对阵 %c\n", b_team[j]);
+                        printf("c 对阵 %c\n", b_team[k]);
+                        match_found = 1;
+                    }
+                }
+            }
+        }
     }
+
+    if (!match_found) {
+        printf("没有找到符合条件的比赛名单。\n");
     }
 
     return 0;
 }
-
-
